@@ -31,6 +31,8 @@ const LoginForm = () => {
         SuccessToast(data.msg)
         dispatch(setLoggin(data.data))
         localStorage.setItem("geeksAuthToken",data.token);
+        localStorage.setItem("geeksAuthemail",data.data.email);
+
         navigate('/home');
       }else{
         console.log("error",data);

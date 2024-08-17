@@ -8,7 +8,10 @@ const Home = () => {
   const url = "https://geeksenergyback.onrender.com";
   const [data, setdata] = useState([]);
   const token = localStorage.getItem("geeksAuthToken");
+  const authemail = localStorage.getItem("geeksAuthemail");
+
   const navigate = useNavigate();
+
   useEffect(() => {
     if (!token) {
       ErrorToast("You Are not Authorised User Go for Login");
@@ -16,7 +19,7 @@ const Home = () => {
     }
 
     getAllData();
-  }, []);
+  }, [authemail,token]);
   const getAllData = async () => {
     try {
       const { data } = await axios.get(`${url}/api/user`, {
@@ -51,20 +54,20 @@ const Home = () => {
               className="bg-white shadow-lg rounded-lg p-6 transition duration-300 ease-in-out transform hover:scale-105"
             >
               <h2 className="text-2xl font-semibold mb-3 text-gray-800">
-                {item?.name}
+                {item?.username}
               </h2>
               <p className="mb-4 text-gray-600">{item?.phoneNumber}</p>
               <p className="mb-4 text-gray-600">{item?.email}</p>
               <p className="mb-4 text-gray-600">{item?.profession}</p>
 
-              <div className="flex justify-between mt-4">
+              {authemail==item.email?<div className="flex justify-between mt-4">
                 <button
                   onClick={() => editPage(item._id)}
                   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow-md transition duration-300 ease-in-out transform hover:scale-105"
                 >
                   Edit
                 </button>
-              </div>
+              </div>:null}
             </div>
           ))
         ) : (
