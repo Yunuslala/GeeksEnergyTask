@@ -5,7 +5,7 @@ import axios from "axios";
 import {  useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const url = "http://localhost:4500";
+  const url = "https://geeksenergyback.onrender.com";
   const [data, setdata] = useState([]);
   const token = localStorage.getItem("geeksAuthToken");
   const navigate = useNavigate();

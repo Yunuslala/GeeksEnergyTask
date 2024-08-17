@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ErrorToast, SuccessToast } from "./Popup";
 
 const Updateprofile = () => {
-      const url="http://localhost:4500"
+      const url="https://geeksenergyback.onrender.com"
   const [formData, setFormData] = useState({
 
     username: "",
